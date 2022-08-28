@@ -125,7 +125,7 @@ contract NFTVault is
         // remove from vaults
         delete vaults[index];
     }
-    
+
     // @notice Withdraw all NFTs that are stored in this contract to all the holders.
     // After calling this function, the vault should be empty.
     // Simples Wrap to Withdraw Function
@@ -154,7 +154,7 @@ contract NFTVault is
             }
         }
     }
-    
+
     // @notice Create a compound index
     // @param _nftAddress The address of the NFT contract
     // @param _tokenId The nft id being deposited
@@ -183,7 +183,7 @@ contract NFTVault is
     function getOwners() public view returns (address[] memory) {
         return owners;
     }
-    
+
     // @notice To permit NFTVault hold NFTs
     // @override IERC721Received
     function onERC721Received(

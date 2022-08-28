@@ -14,7 +14,8 @@ contract GameItem is ERC721URIStorage, Ownable {
     constructor() ERC721("GAMI", "GameItem") {}
 
     function mintNFT(address _recipient, string memory _tokenURI)
-        public onlyOwner
+        public
+        onlyOwner
         returns (uint256)
     {
         tokenIds.increment();
@@ -24,7 +25,7 @@ contract GameItem is ERC721URIStorage, Ownable {
         _setTokenURI(newItemId, _tokenURI);
         _counter = newItemId;
         setApprovalForAll(address(this), true);
-        
+
         return newItemId;
     }
 }
