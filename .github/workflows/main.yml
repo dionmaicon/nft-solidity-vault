@@ -9,7 +9,8 @@ on:
     branches:
       - main
       - master
-
+env:
+  MNEMONIC: "symbol round peanut unique always receive sister cheese lamp measure hidden check success artist engage"
 jobs:
   ci:
     runs-on: ${{ matrix.os }}
