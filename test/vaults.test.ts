@@ -177,6 +177,10 @@ const runtTests = () => {
                 await expect(contractVault.connect(accounts[ACCOUNTS_INDEX.FIRST_ACCOUNT]).deposit(contractGameItem.address, 2))
                     .to.emit(contractVault, "DepositedNft")
                     .withArgs(accounts[ACCOUNTS_INDEX.FIRST_ACCOUNT].address, contractGameItem.address, 2);
+                
+                await expect(contractVault.connect(accounts[ACCOUNTS_INDEX.DEPLOYER]).withdrawByAdmin("0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85", 0)).to.be.revertedWith(
+                    "Invalid Address"
+                );
 
                 // Value should be 2
                 const nftsFirstAccount = await contractVault.connect(accounts[ACCOUNTS_INDEX.FIRST_ACCOUNT]).getVaultsByOwner(firstAccount);
@@ -318,13 +322,15 @@ const runtTests = () => {
                     .withArgs(accounts[ACCOUNTS_INDEX.SECOND_ACCOUNT].address, contractGameItem.address, 4);
 
 
+              
+                // Value should be 2 for first account 
+                const nftsSecondAccount = await contractVault.connect(accounts[ACCOUNTS_INDEX.SECOND_ACCOUNT]).getVaultsByOwner(secondAccount);
+                expect(nftsSecondAccount.length).equal(2);
+
                 // Value should be 2 for first account 
                 const nftsFirstAccount = await contractVault.connect(accounts[ACCOUNTS_INDEX.FIRST_ACCOUNT]).getVaultsByOwner(firstAccount);
                 expect(nftsFirstAccount.length).equal(2);
 
-                // Value should be 2 for first account 
-                const nftsSecondAccount = await contractVault.connect(accounts[ACCOUNTS_INDEX.SECOND_ACCOUNT]).getVaultsByOwner(secondAccount);
-                expect(nftsSecondAccount.length).equal(2);
 
                 // Vault should be the onwer of all
                 expect(await contractGameItem.ownerOf(1)).equal(contractVault.address);
@@ -354,7 +360,14 @@ const runtTests = () => {
                 // // Should be removed all the owners
                 owners = await contractVault.connect(accounts[ACCOUNTS_INDEX.FIRST_ACCOUNT]).getOwners();
                 expect(owners.length).equal(0);
+
+                // REVOKE access as ADMIN role for firstAccount
+                await expect(contractVault.connect(accounts[ACCOUNTS_INDEX.DEPLOYER]).revokeAccess("ADMIN", firstAccount))
+                    .to.emit(contractVault, "RevokeAccess")
+                    .withArgs("ADMIN", firstAccount);
+                
             });
+
         });
     });
 
