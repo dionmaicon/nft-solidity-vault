@@ -1,0 +1,26 @@
+{
+  "name": "nft-solidity-vault",
+  "version": "1.0.0",
+  "description": "NFT VAULT",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx hardhat test"
+  },
+  "keywords": [
+    "solidity",
+    "nft",
+    "vault"
+  ],
+  "author": "Dion Maicon <dion@clubedoblockchain.com>",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^1.0.2",
+    "chai-bn": "^0.3.1",
+    "dotenv": "^16.0.1",
+    "hardhat": "^2.10.2",
+    "web3-utils": "^1.7.5"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.7.3"
+  }
+}
