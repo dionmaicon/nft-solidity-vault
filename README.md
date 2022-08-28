@@ -10,6 +10,15 @@ I used the last [Hardhat Toolbox](https://hardhat.org/hardhat-runner/plugins/nom
 - hardhat-etherscan
 - hardhat-gas-reporter
 
+## RUN this Project
+
+Create and .env file based in .env.example.
+Remember to run:
+
+```shell
+# install dependencies
+npm install
+```
 
 Try running some of the following tasks:
 
