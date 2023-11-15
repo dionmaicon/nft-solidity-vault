@@ -34,7 +34,7 @@ npx hardhat node
 ## Solution 
 First of all, I created a NFT Token (GameItem) with mandatories contracts/interfaces to handle the ERC-721 Token using @openzeppelin. After, I created a script to deploy the GameItem.sol and mint NFT's. So, I could run this script each time I want make a test for example.
 
-I tested almost all the flow and the coverage print is appended bellow (I didn't integrate with Coveralls because the repo is private haha).
+I tested almost all the flow and the coverage print is appended bellow.
 
 i needed to implement an AccessControl.sol to handle with ADMIN and USER requirements. I thought that it would be better than use an Ownable contract. So, We can GRANT and REVOKE access to NFTVault.sol.
 
