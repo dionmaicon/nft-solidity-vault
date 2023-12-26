@@ -36,7 +36,7 @@ First of all, I created a NFT Token (GameItem) with mandatories contracts/interf
 
 I tested almost all the flow and the coverage print is appended bellow
 
-i needed to implement an AccessControl.sol to handle with ADMIN and USER requirements. I thought that it would be better than use an Ownable contract. So, We can GRANT and REVOKE access to NFTVault.sol.
+I needed to implement an AccessControl.sol to handle with ADMIN and USER requirements. I thought that it would be better than use an Ownable contract. So, We can GRANT and REVOKE access to NFTVault.sol.
 
 ## NFTVault.sol
 
