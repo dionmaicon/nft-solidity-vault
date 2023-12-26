@@ -199,15 +199,21 @@ contract NFTVault is
     // @param _index The compoundIndex
     // @param _owner The nft onwer
     function _removeUserVault(bytes32 _index, address _owner) private {
-        bytes32[] storage _vaultsByOwner = vaultsByOwner[_owner];
-        for (uint i = 0; i < _vaultsByOwner.length; i++) {
-            if (_vaultsByOwner[i] == _index) {
-                _vaultsByOwner[i] = _vaultsByOwner[_vaultsByOwner.length - 1];
-                _vaultsByOwner.pop();
+        bool _found = true;
+        while (_found) {
+            _found = false;
+            bytes32[] storage _vaultsByOwner = vaultsByOwner[_owner];
+        
+            for (uint i = 0; i < _vaultsByOwner.length; i++) {
+                if (_vaultsByOwner[i] == _index) {
+                    _vaultsByOwner[i] = _vaultsByOwner[_vaultsByOwner.length - 1];
+                    _vaultsByOwner.pop(); 
+                    _found = true;
+                }
             }
         }
 
-        if (_vaultsByOwner.length == 0) {
+        if (vaultsByOwner[_owner].length == 0) {
             _removeOwner(_owner);
         }
     }
@@ -219,6 +225,7 @@ contract NFTVault is
             if (owners[i] == _owner) {
                 owners[i] = owners[owners.length - 1];
                 owners.pop();
+                break;
             }
         }
     }
