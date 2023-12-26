@@ -16,11 +16,11 @@
   "author": "Dion Maicon <dion@clubedoblockchain.com>",
   "license": "GPL-3.0",
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^1.0.2",
-    "@openzeppelin/contracts": "^4.7.3",
+    "@nomicfoundation/hardhat-toolbox": "^2.0.2",
+    "@openzeppelin/contracts": "^4.9.0",
     "chai-bn": "^0.3.1",
     "dotenv": "^16.0.1",
-    "hardhat": "^2.10.2",
+    "hardhat": "^2.14.2",
     "web3-utils": "^1.7.5"
   }
 }
