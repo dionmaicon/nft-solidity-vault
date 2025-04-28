@@ -30,7 +30,7 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Cache node_modules 📦
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -38,7 +38,7 @@ jobs:
             ${{ runner.os }}-node-
       - name: Install dependencies 👨🏻‍💻
         run: npm install
-      
+
       - name: Run Compile 👀
         run: npm run build
 
